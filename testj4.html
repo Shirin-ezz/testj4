@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greeting Form</title>
+    <title>Greeting Form - Problem 4</title>
     <script>
-        // This function will pop up an alert with the clicked button's text as the prefix
+        // Function that uses the clicked button's text as the greeting prefix
         function speak(event) {
-            // Get the value of the name input field
+            // Get the value from the input field
             let name = document.getElementById("nameInput").value;
-            // Get the text of the clicked button
+            // Get the text of the clicked button (e.g., 'Hello', 'Good Bye', 'Greetings')
             let prefix = event.target.innerText;
-            // Show an alert with the prefix and the name
+            // Pop up an alert with the prefix and the name
             alert(prefix + " " + name);
         }
 
-        // Assign event handlers to the buttons once the window has loaded
+        // Assign the event handlers when the window loads
         window.onload = function() {
-            // Get the buttons by their IDs
+            // Attach the speak function to each button
             document.getElementById("helloButton").onclick = speak;
             document.getElementById("goodbyeButton").onclick = speak;
             document.getElementById("greetingsButton").onclick = speak;
@@ -25,13 +25,13 @@
     </script>
 </head>
 <body>
-    <!-- Form with input box and buttons -->
+    <!-- Form with input and buttons -->
     <form>
-        <!-- Input box for user's name -->
+        <!-- Input for user's name -->
         <label for="nameInput">Enter your name: </label>
         <input type="text" id="nameInput" name="nameInput" placeholder="Enter your name">
 
-        <!-- Buttons without inline event handlers, IDs added for reference -->
+        <!-- Buttons with IDs (no inline event handlers) -->
         <button type="button" id="helloButton">Hello</button>
         <button type="button" id="goodbyeButton">Good Bye</button>
         <button type="button" id="greetingsButton">Greetings</button>
