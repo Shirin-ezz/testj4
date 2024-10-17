@@ -3,95 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Greeting Form - Problem 4</title>
-  <style>
-    /* Basic styling for the form */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 50px;
-      background-color: #f9f9f9;
-    }
-    .form-container {
-      max-width: 400px;
-      margin: auto;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      color: #333333;
-    }
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      box-sizing: border-box;
-      font-size: 16px;
-      border: 1px solid #cccccc;
-      border-radius: 4px;
-    }
-    .button-group {
-      display: flex;
-      justify-content: space-between;
-    }
-    button {
-      flex: 1;
-      padding: 10px;
-      margin: 0 5px;
-      font-size: 16px;
-      cursor: pointer;
-      border: none;
-      border-radius: 4px;
-      color: #ffffff;
-      transition: background-color 0.3s ease;
-    }
-    #helloButton {
-      background-color: #4CAF50;
-    }
-    #helloButton:hover {
-      background-color: #45a049;
-    }
-    #goodByeButton {
-      background-color: #f44336;
-    }
-    #goodByeButton:hover {
-      background-color: #da190b;
-    }
-    #greetingsButton {
-      background-color: #008CBA;
-    }
-    #greetingsButton:hover {
-      background-color: #007bb5;
-    }
-    #alertMessage {
-      color: red;
-      margin-top: 10px;
-      text-align: center;
-    }
-  </style>
 </head>
 <body>
 
-  <div class="form-container">
-    <h2 style="text-align: center; color: #333333;">Greeting Form</h2>
-    <form id="greetingForm">
-      <label for="nameInput">Enter your name:</label>
-      <input type="text" id="nameInput" name="nameInput" placeholder="Your name here">
+  <h2>Greeting Form</h2>
 
-      <div class="button-group">
-        <!-- Buttons without inline event handlers -->
-        <button type="button" id="helloButton">Hello</button>
-        <button type="button" id="goodByeButton">Good Bye</button>
-        <button type="button" id="greetingsButton">Greetings</button>
-      </div>
+  <!-- Form with input box and three buttons -->
+  <form id="greetingForm">
+    <label for="nameInput">Enter your name:</label><br>
+    <input type="text" id="nameInput" name="nameInput" placeholder="Your name here"><br><br>
 
-      <!-- Div to display alert messages -->
-      <div id="alertMessage"></div>
-    </form>
-  </div>
+    <!-- Buttons without inline event handlers -->
+    <button type="button" id="helloButton">Hello</button>
+    <button type="button" id="goodByeButton">Good Bye</button>
+    <button type="button" id="greetingsButton">Greetings</button>
+
+    <!-- Div to display alert messages -->
+    <div id="alertMessage" style="color: red; margin-top: 10px;"></div>
+  </form>
 
   <script>
     /**
@@ -110,7 +39,7 @@
       // Reference to the alert message div
       const alertMessage = document.getElementById('alertMessage');
 
-      // Validation: Check if the name input is empty
+      // Check if the name input is empty
       if (name === '') {
         // Display an error message if name is empty
         alertMessage.textContent = 'Please enter your name.';
