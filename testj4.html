@@ -1,40 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greeting Form - Problem 4</title>
-    <script>
-        // Function that uses the clicked button's text as the greeting prefix
-        function speak(event) {
-            // Get the value from the input field
-            let name = document.getElementById("nameInput").value;
-            // Get the text of the clicked button (e.g., 'Hello', 'Good Bye', 'Greetings')
-            let prefix = event.target.innerText;
-            // Pop up an alert with the prefix and the name
-            alert(prefix + " " + name);
-        }
-
-        // Assign the event handlers when the window loads
-        window.onload = function() {
-            // Attach the speak function to each button
-            document.getElementById("helloButton").onclick = speak;
-            document.getElementById("goodbyeButton").onclick = speak;
-            document.getElementById("greetingsButton").onclick = speak;
-        };
-    </script>
+  <meta charset="UTF-8">
+  <title>Greeting Form - Problem 4</title>
+  <style>
+    /* Basic styling for the form */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 50px;
+      background-color: #f9f9f9;
+    }
+    .form-container {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #333333;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      font-size: 16px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+    }
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      flex: 1;
+      padding: 10px;
+      margin: 0 5px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      color: #ffffff;
+      transition: background-color 0.3s ease;
+    }
+    #helloButton {
+      background-color: #4CAF50;
+    }
+    #helloButton:hover {
+      background-color: #45a049;
+    }
+    #goodByeButton {
+      background-color: #f44336;
+    }
+    #goodByeButton:hover {
+      background-color: #da190b;
+    }
+    #greetingsButton {
+      background-color: #008CBA;
+    }
+    #greetingsButton:hover {
+      background-color: #007bb5;
+    }
+    #alertMessage {
+      color: red;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <!-- Form with input and buttons -->
-    <form>
-        <!-- Input for user's name -->
-        <label for="nameInput">Enter your name: </label>
-        <input type="text" id="nameInput" name="nameInput" placeholder="Enter your name">
 
-        <!-- Buttons with IDs (no inline event handlers) -->
+  <div class="form-container">
+    <h2 style="text-align: center; color: #333333;">Greeting Form</h2>
+    <form id="greetingForm">
+      <label for="nameInput">Enter your name:</label>
+      <input type="text" id="nameInput" name="nameInput" placeholder="Your name here">
+
+      <div class="button-group">
+        <!-- Buttons without inline event handlers -->
         <button type="button" id="helloButton">Hello</button>
-        <button type="button" id="goodbyeButton">Good Bye</button>
+        <button type="button" id="goodByeButton">Good Bye</button>
         <button type="button" id="greetingsButton">Greetings</button>
+      </div>
+
+      <!-- Div to display alert messages -->
+      <div id="alertMessage"></div>
     </form>
+  </div>
+
+  <script>
+    /**
+     * Function to display a greeting alert.
+     * Determines the greeting prefix based on the clicked button's text.
+     * @param {Event} event - The event object triggered by the button click.
+     */
+    function speak(event) {
+      // Get the greeting prefix from the clicked button's text
+      const prefix = event.target.textContent;
+
+      // Get the name from the input box and trim whitespace
+      const nameInput = document.getElementById('nameInput');
+      const name = nameInput.value.trim();
+
+      // Reference to the alert message div
+      const alertMessage = document.getElementById('alertMessage');
+
+      // Validation: Check if the name input is empty
+      if (name === '') {
+        // Display an error message if name is empty
+        alertMessage.textContent = 'Please enter your name.';
+      } else {
+        // Clear any previous error messages
+        alertMessage.textContent = '';
+        // Display the greeting alert
+        alert(`${prefix} ${name}`);
+      }
+    }
+
+    /**
+     * Assigns event handlers to the buttons once the window loads.
+     */
+    window.onload = function() {
+      // Get references to the buttons
+      const helloButton = document.getElementById('helloButton');
+      const goodByeButton = document.getElementById('goodByeButton');
+      const greetingsButton = document.getElementById('greetingsButton');
+
+      // Assign the speak function as the event handler for each button
+      helloButton.addEventListener('click', speak);
+      goodByeButton.addEventListener('click', speak);
+      greetingsButton.addEventListener('click', speak);
+    };
+  </script>
+
 </body>
 </html>
